@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Register</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared-styles.css"></head>
+<body>
+  <header class="site-header"><div class="header-container"><div class="header-title">Register</div><nav class="header-nav"><a href="landing.html">Home</a><a href="login.html">Login</a></nav></div></header>
+
+  <main class="container">
+    <section class="card" style="max-width:480px;margin:0 auto">
+      <h3>建立學生帳號</h3>
+      <form class="form" onsubmit="registerUser(event)">
+        <label>Name <input name="name" class="input" required></label>
+        <label>Email <input name="email" class="input" type="email" required></label>
+        <label>Password <input name="password" class="input" type="password" minlength="8" required></label>
+        <div><button class="btn" type="submit">註冊</button> <a href="login.html" class="muted" style="margin-left:1rem">已有帳號？登入</a></div>
+        <p class="muted">註冊表示你同意我們的使用條款與私隱政策。</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container">© Hei Chun • 2025</div></footer>
+  <script src="main.js"></script>
+</body>
+</html>
