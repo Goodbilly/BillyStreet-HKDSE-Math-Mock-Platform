@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Exam</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared-styles.css"></head>
+<body>
+  <header class="site-header"><div class="header-container"><div class="header-title">Exam</div><nav class="header-nav"><a href="dashboard.html">Dashboard</a><a href="landing.html">Home</a></nav></div></header>
+
+  <main class="container">
+    <section id="exam-area" class="card">
+      <h3 id="exam-title">Loading…</h3>
+      <div id="exam-info" class="muted">請稍後載入題目</div>
+      <div id="questions"></div>
+      <div style="margin-top:1rem">
+        <button class="btn" onclick="submitExam()">Submit</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container">© Hei Chun • 2025</div></footer>
+  <script src="main.js"></script>
+  <script>
+    // minimal loader: expects /api/exams/:id to return {id,title,questions:[{id,type,text,choices?}]}
+    async function loadExam(){
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id');
+      if(!id) return document.getElementById('exam-title').innerText='未指定考卷';
+      const data = await api('/exams/'+id);
+      document.getElementById('exam-title').innerText = data.title;
+      document.getElementById('exam-info').innerText = data.time_limit ? ('限時 ' + data.time_limit + ' 分鐘') : '';
+      const qEl = document.getElementById('questions');
+      qEl.innerHTML = data.questions.map((q,idx)=> {
+        if(q.type === 'mcq'){
+          return `<div class="card"><strong>Q${idx+1}.</strong> ${q.text}
+            <div>${q.choices.map(c=>`<label style="display:block"><input type="radio" name="q${q.id}" value="${c}"> ${c}</label>`).join('')}</div></div>`;
+        } else {
+          return `<div class="card"><strong>Q${idx+1}.</strong> ${q.text}
+            <div><input class="input" name="q${q.id}"></div></div>`;
+        }
+      }).join('');
+    }
+
+    async function submitExam(){
+      alert('提交後會送到後端自動評分（範例）');
+      // Collect answers (sketch)
+      const answers = {};
+      document.querySelectorAll('[name]').forEach(inp=>{
+        if(inp.type === 'radio') { if(inp.checked) answers[inp.name] = inp.value; }
+        else { answers[inp.name] = inp.value; }
+      });
+      // You'd POST to /api/exams/:id/submit
+      // await api(`/exams/${id}/submit`, { method:'POST', body: JSON.stringify({ answers }) });
+      location.href = '/results.html?attempt=demo';
+    }
+
+    loadExam();
+  </script>
+</body>
+</html>
