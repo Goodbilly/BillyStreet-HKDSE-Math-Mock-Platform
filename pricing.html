@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Plans & Pricing</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared-styles.css"></head>
+<body>
+  <header class="site-header"><div class="header-container"><div class="header-title">Plans</div><nav class="header-nav"><a href="landing.html">Home</a><a href="login.html">Login</a></nav></div></header>
+
+  <main class="container">
+    <section class="card">
+      <h3>付費方案</h3>
+      <p class="muted">我們支援單次購買試卷與訂閱制。以下為系統中可用方案（實際價格與計費請在後端管理）。</p>
+      <div id="products" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1rem"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container">© Hei Chun • 2025</div></footer>
+  <script src="main.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',()=>loadProducts(document.getElementById('products')))</script>
+</body>
+</html>
