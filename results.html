@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Results</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared-styles.css"></head>
+<body>
+  <header class="site-header"><div class="header-container"><div class="header-title">Results</div><nav class="header-nav"><a href="dashboard.html">Dashboard</a><a href="landing.html">Home</a></nav></div></header>
+
+  <main class="container">
+    <section id="result-area" class="card">
+      <h3>Loading result…</h3>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container">© Hei Chun • 2025</div></footer>
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async ()=>{
+      const params = new URLSearchParams(location.search);
+      const attempt = params.get('attempt');
+      if(!attempt) return document.getElementById('result-area').innerHTML = '<div class="card">無法顯示結果</div>';
+      // replace with real fetch
+      // await loadResult(attempt, document.getElementById('result-area'));
+      document.getElementById('result-area').innerHTML = '<div class="card"><h3>示例成績：78%</h3><p class="muted">此頁面會顯示詳細回饋、錯題分析與建議。</p></div>';
+    });
+  </script>
+</body>
+</html>
