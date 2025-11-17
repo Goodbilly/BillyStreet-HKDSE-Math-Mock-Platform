@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared-styles.css"></head>
+<body>
+  <header class="site-header"><div class="header-container"><div class="header-title">Login</div><nav class="header-nav"><a href="landing.html">Home</a><a href="register.html">Register</a></nav></div></header>
+
+  <main class="container">
+    <section class="card" style="max-width:420px;margin:0 auto">
+      <h3>登入</h3>
+      <form class="form" onsubmit="loginUser(event)">
+        <label>Email <input name="email" class="input" type="email" required></label>
+        <label>Password <input name="password" class="input" type="password" required></label>
+        <div><button class="btn" type="submit">登入</button> <a href="#" class="muted" style="margin-left:1rem">忘記密碼？</a></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container">© Hei Chun • 2025</div></footer>
+  <script src="main.js"></script>
+</body>
+</html>
